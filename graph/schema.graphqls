@@ -1,0 +1,33 @@
+type Question {
+  id: Int!
+  question_text: String!
+  pub_date: String!
+  choices: [Choice]
+}
+
+type Choice {
+  id: Int!
+  question: Question!
+  question_id: Int!
+  choice_text: String!
+}
+
+type Query {
+  questions: [Question]!
+  choices: [Choice]!
+}
+
+input QuestionInput {
+  question_text: String!
+  pub_date: String!
+}
+
+input ChoiceInput {
+  question_id: Int!
+  choice_text: String!
+}
+
+type Mutation {
+  createQuestion(input: QuestionInput!): Question!
+  createChoice(input: ChoiceInput!): Choice!
+}
